@@ -5,6 +5,7 @@ import subprocess
 import numpy as np
 import shutil
 import tqdm
+
 def autocorrelation(y):
 	yunbiased = y-np.mean(y)
 	ynorm = np.sum(yunbiased**2)
@@ -185,28 +186,6 @@ class ClusterReader:
 			self.autocors[cluster]=autocorrelation(signal)
 
 		self.len_autocor=len(self.autocors[list(self.unique_clusters)[0]])
-		# self.len_autocor=len(self.autocor
-		# print(":: Identifying unique clusters...")
-		# for f in self.frames:
-		# 	for c in f:
-		# 		if c !=[]:
-		# 			self.unique_clusters.add(tuple(c))
-		# self.unique_clusters=list(self.unique_clusters)
-
-		# check the presence of clusters across the frames
-		
-		
-		# print(":: Computing autocorrelations...")
-		# for cluster in tqdm.tqdm(self.unique_clusters):
-		# 	signal = []
-		# 	for f in self.frames :
-		# 		if cluster in f:
-		# 			signal.append(1)
-		# 		else:
-		# 			signal.append(0)
-		# 	self.signals[cluster]=signal
-		# 	self.autocors[cluster]=autocorrelation(signal)
-		
 
 	def plot_signals(self):
 		if self.valid:
